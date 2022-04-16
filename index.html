@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework7</title>
+    <body>
+        <script>
+            ////Task 1
+
+            function pushIntoArray(index, newUser) {
+            const collectionResult = []
+            const tmpArrRightPart = []
+
+                for (let i = 0; i < index; i++) {
+                    collectionResult[collectionResult.length] = collection[i]
+                }
+
+                collectionResult[collectionResult.length] = newUser
+
+                for (let i = index; i < collection.length; i++) {
+                    tmpArrRightPart[tmpArrRightPart.length] = collection[i]
+                }
+
+                for (let i = 0; i < tmpArrRightPart.length; i++) {
+                    collectionResult[collectionResult.length] = tmpArrRightPart[i]
+                }
+
+            return collectionResult
+            }
+
+            const collection = ['ivan', 'olga', 'petr', 'oleg', 'serj']
+
+            console.log('Collection Result:' + ' ' + pushIntoArray(3, 'John'));
+            
+            ////Task 2
+
+            function isInclude(array, searchElement, fromIndex) {
+                let bool = false;
+
+                for (i = fromIndex; i < array.length; i++) {
+
+                    if (i < 0) {
+                        break;
+                    } else if (array[i] === searchElement) {
+                        bool = true;
+                        break;
+                    }
+                }
+
+                for (i = array.length + fromIndex; i < array.length; i++) {
+
+                    if (array[i] === searchElement) {
+                        bool = true;
+                    }
+                }
+
+                return bool;
+            }
+
+            console.log('Includes:' + ' ' + isInclude(["Mercedes","BMW","Porsche","Audi","Volkswagen"], "Porsche", -3))
+
+            function isIndexOf(array, searchElement, fromIndex = 0) {
+                let index = -1;
+
+                for (i = fromIndex; i < array.length; i++) {
+
+                    if (array[i] === searchElement) {
+                        index = i;
+                        break;
+                    } 
+                }
+
+                for (i = array.length + fromIndex; i < array.length; i++) {
+
+                    if (array[i] === searchElement) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                return index;
+            }
+
+            console.log('IndexOf:' + ' ' + isIndexOf(["Mercedes","Porsche","BMW","Audi","Volkswagen", "BMW"], "BMW", -5))
+
+            function isLastIndexOf(array, searchElement, fromIndex = array.length - 1) {
+                let index = -1;
+
+                
+                for (i = fromIndex; i <= array.length; i--) {
+
+                    if (array[i] === searchElement) {
+                        index = i;
+                    }
+                    break;
+                }
+
+                for (i = array.length - 1; i <= fromIndex; i--) {
+
+                    if (array[i] === searchElement) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                for (i = array.length + fromIndex; fromIndex <= i ; i--) {
+
+                    if (array[i] === searchElement) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                return index;
+            }
+            console.log('lastIndexOf:' + ' ' + isLastIndexOf(["Mercedes","BMW","Porsche","Audi","Volkswagen", "BMW"], "BMW", -2))
+
+        </script>
+    </body>
+</head>
