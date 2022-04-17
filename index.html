@@ -35,85 +35,54 @@
             ////Task 2
 
             function isInclude(array, searchElement, fromIndex) {
-                let bool = false;
-
-                for (i = fromIndex; i < array.length; i++) {
-
-                    if (i < 0) {
-                        break;
-                    } else if (array[i] === searchElement) {
-                        bool = true;
-                        break;
-                    }
-                }
-
-                for (i = array.length + fromIndex; i < array.length; i++) {
-
+                const index = fromIndex >= 0 ? fromIndex : array.length + fromIndex;
+                
+                for (let i = index; i < array.length; i++) {
                     if (array[i] === searchElement) {
-                        bool = true;
+                    return true;
                     }
                 }
-
-                return bool;
-            }
+                
+                return false;
+                }
 
             console.log('Includes:' + ' ' + isInclude(["Mercedes","BMW","Porsche","Audi","Volkswagen"], "Porsche", -3))
 
             function isIndexOf(array, searchElement, fromIndex = 0) {
-                let index = -1;
+                const index = fromIndex >= 0 ? fromIndex : array.length + fromIndex;
 
-                for (i = fromIndex; i < array.length; i++) {
+                for (i = index; i < array.length; i++) {
 
                     if (array[i] === searchElement) {
-                        index = i;
-                        break;
+                        return i;
                     } 
                 }
 
-                for (i = array.length + fromIndex; i < array.length; i++) {
-
-                    if (array[i] === searchElement) {
-                        index = i;
-                        break;
-                    }
-                }
-
-                return index;
+                return -1;
             }
 
             console.log('IndexOf:' + ' ' + isIndexOf(["Mercedes","Porsche","BMW","Audi","Volkswagen", "BMW"], "BMW", -5))
 
-            function isLastIndexOf(array, searchElement, fromIndex = array.length - 1) {
-                let index = -1;
+            function isLastIndexOf(array, searchElement, fromIndex) {
 
-                
-                for (i = fromIndex; i <= array.length; i--) {
-
-                    if (array[i] === searchElement) {
-                        index = i;
-                    }
-                    break;
+                if (fromIndex > array.length) {
+                    index = array.length;
+                } else if (fromIndex > 0) {
+                    index = fromIndex;
+                } else  if (fromIndex <= 0) {
+                    index = array.length + fromIndex;
                 }
 
-                for (i = array.length - 1; i <= fromIndex; i--) {
+                for (i = index; i >= 0; i--) {
 
                     if (array[i] === searchElement) {
-                        index = i;
-                        break;
-                    }
+                        return i;
+                    } 
                 }
 
-                for (i = array.length + fromIndex; fromIndex <= i ; i--) {
-
-                    if (array[i] === searchElement) {
-                        index = i;
-                        break;
-                    }
-                }
-
-                return index;
+                return -1;
             }
-            console.log('lastIndexOf:' + ' ' + isLastIndexOf(["Mercedes","BMW","Porsche","Audi","Volkswagen", "BMW"], "BMW", -2))
+            console.log('lastIndexOf:' + ' ' + isLastIndexOf(["Mercedes","BMW","Porsche","Audi","Volkswagen", "BMW"], "BMW", 3))
 
         </script>
     </body>
